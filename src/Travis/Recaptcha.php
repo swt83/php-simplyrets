@@ -21,7 +21,6 @@ class Recaptcha
             'secret' => $secret_key,
             'response' => $token,
         ];
-        $payload_as_json = json_encode($payload);
 
         // setup curl request
         $ch = curl_init();
@@ -31,7 +30,7 @@ class Recaptcha
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload_as_json);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         $response = curl_exec($ch);
 
         // catch error...
@@ -52,7 +51,7 @@ class Recaptcha
 
         // decode response
         $response = json_decode($response);
-
+        xx($response);
         // return response success value
         return ex($response, 'success', false);
     }

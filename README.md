@@ -1,4 +1,4 @@
-# ReCAPTCHA
+# reCAPTCHA
 
 A PHP library for working w/ the [Google reCAPTCHA API](https://developers.google.com/recaptcha/docs/verify).
 
