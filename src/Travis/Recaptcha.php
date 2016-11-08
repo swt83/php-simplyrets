@@ -51,7 +51,7 @@ class Recaptcha
 
         // decode response
         $response = json_decode($response);
-        xx($response);
+
         // return response success value
         return ex($response, 'success', false);
     }
