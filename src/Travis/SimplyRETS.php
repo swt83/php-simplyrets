@@ -36,8 +36,8 @@ class SimplyRETS
 
         // make headers
         $headers = [
-            #'accept:application/json', // will use latest repsonse format
-            'accept:application/vnd.simplyrets-v0.1+json', // will use specific response format (stable)
+            'accept:application/json', // will use latest repsonse format
+            #'accept:application/vnd.simplyrets-v0.1+json', // will use specific response format (stable)
         ];
 
         // setup curl request
