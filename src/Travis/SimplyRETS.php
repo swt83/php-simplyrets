@@ -51,6 +51,7 @@ class SimplyRETS
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         $response = curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         // catch error...
         if (curl_errno($ch))
@@ -68,7 +69,13 @@ class SimplyRETS
         // close
         curl_close($ch);
 
-        // decode response
-        return json_decode($response);
+        // decode
+        $response = json_decode($response);
+
+        // catch error...
+        if ($code !== 200) trigger_error(ex($response, 'message', 'error'));
+
+        // return
+        return $response;
     }
 }
