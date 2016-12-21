@@ -28,11 +28,28 @@ class SimplyRETS
         // build uri
         $uri = strtolower($method).($mls_id ? '/'.$mls_id : '');
 
-        // build payload
-        $payload = http_build_query($args[0]);
+        // build query
+        $query = '?';
+        foreach ($args[0] as $key => $value)
+        {
+            // if value is an array...
+            if (is_array($value))
+            {
+                // add multiple times...
+                foreach ($value as $v)
+                {
+                    $query .= urlencode($key).'='.urlencode($v).'&';
+                }
+            }
+            else
+            {
+                // add to query
+                $query .= urlencode($key).'='.urlencode($value).'&';
+            }
+        }
 
         // build endpoint
-        $endpoint = 'https://api.simplyrets.com/'.$uri.'?'.$payload;
+        $endpoint = 'https://api.simplyrets.com/'.$uri.'?'.$query;
 
         // make headers
         $headers = [
