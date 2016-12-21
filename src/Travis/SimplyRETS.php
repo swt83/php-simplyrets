@@ -29,7 +29,7 @@ class SimplyRETS
         $uri = strtolower($method).($mls_id ? '/'.$mls_id : '');
 
         // build query
-        $query = '?';
+        $query = '';
         foreach ($args[0] as $key => $value)
         {
             // if value is an array...
